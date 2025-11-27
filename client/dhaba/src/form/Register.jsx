@@ -8,7 +8,7 @@ const Register = () => {
     <div className="min-h-screen flex items-center justify-center bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')]">
       <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl w-full max-w-md rounded-2xl p-8">
 
-        ```
+      
         <h2 className="text-3xl font-semibold text-white text-center mb-6">
           Create Account
         </h2>
@@ -65,7 +65,6 @@ const Register = () => {
             Login
           </Link>
         </p>
-        ```
       </div>
     </div>
 
