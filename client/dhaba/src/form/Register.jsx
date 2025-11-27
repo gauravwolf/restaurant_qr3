@@ -1,7 +1,7 @@
 import React from 'react'
-import { Button, Label, TextInput } from "flowbite-react";
+// import { Button, Label, TextInput } from "flowbite-react";
 import { Link } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
+// import { FcGoogle } from "react-icons/fc";
 
 const Register = () => {
   return (

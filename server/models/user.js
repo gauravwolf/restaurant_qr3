@@ -1,5 +1,3 @@
-//module => commonjs / es6
-
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
@@ -29,12 +27,19 @@ const userSchema = new mongoose.Schema({
   totalOrders : {
     type : Number
   },
-  loyalPoints : {
+  loyaltyPoints : {
     type : Number 
   },
   refreshToken: {
     type: String,
   },
+  refreshTokenExpiresTime : {
+    type : Date
+  },
+  lastlogin : {
+    type : Date,
+    default : Date.now()
+  }
 });
 
 const User = mongoose.model('User', userSchema);
