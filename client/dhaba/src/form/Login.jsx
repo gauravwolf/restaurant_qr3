@@ -1,56 +1,59 @@
-import Button from "@/components/ui/button";
-import Input from "@/components/ui/input";
-import Label from "@/components/ui/label";
-import Separator from "@/components/ui/separator";
-import { FcGoogle } from "react-icons/fc";
-
-
-
-export default function Login() {
+import React from 'react'
+import { Link } from "react-router-dom";
+// import { Button, Label, TextInput } from "flowbite-react";
+// import { FcGoogle } from "react-icons/fc";
+const login = () => {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="w-full max-w-md bg-white shadow-lg rounded-xl p-8 space-y-6">
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')]">
+      <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl w-full max-w-md rounded-2xl p-8">
         
-        <h2 className="text-2xl font-semibold text-center">Login</h2>
+        <h2 className="text-3xl font-semibold text-white text-center mb-6">
+          Welcome Back
+        </h2>
 
-        
-        <Button
-          variant="outline"
-          className="w-full flex items-center gap-2"
-        >
-          <FcGoogle size={22} />
-          Login with Google
-        </Button>
+        {/* Google Button */}
+        <button className="w-full bg-white text-gray-700 py-2 rounded-lg font-medium flex items-center justify-center gap-2 hover:bg-gray-200 transition">
+          <img
+            src="https://www.svgrepo.com/show/475656/google-color.svg"
+            className="w-5 h-5"
+            alt=""
+          />
+          Continue with Google
+        </button>
 
-        <div className="flex items-center gap-2">
-          <Separator className="flex-1" />
-          <span className="text-sm text-gray-500">OR</span>
-          <Separator className="flex-1" />
+        <div className="flex items-center my-5">
+          <div className="flex-grow h-px bg-white/30" />
+          <span className="text-white px-3">OR</span>
+          <div className="flex-grow h-px bg-white/30" />
         </div>
 
-        
-        <div className="space-y-2">
-          <Label>Email</Label>
-          <Input type="email" placeholder="Enter your email" />
+        <div className="space-y-4">
+          <input
+            type="email"
+            placeholder="Email Address"
+            className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:border-blue-300"
+          />
+
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-2 rounded-lg bg-white/20 text-white placeholder-white/70 border border-white/30 focus:outline-none focus:border-blue-300"
+          />
+
+          <button className="w-full py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition font-medium">
+            Login
+          </button>
         </div>
 
-        
-        <div className="space-y-2">
-          <Label>Password</Label>
-          <Input type="password" placeholder="Enter your password" />
-        </div>
-
-    
-        <Button className="w-full">Login</Button>
-
-        
-        <p className="text-center text-sm">
-          Don't have an account?
-          <a href="/register" className="text-blue-600 font-medium ml-1">
-            Create an account
-          </a>
+        <p className="text-white text-center mt-5">
+          Don’t have an account?{" "}
+          <Link className="text-blue-300 hover:underline" to="/register">
+            Create one
+          </Link>
         </p>
       </div>
     </div>
-  );
+  )
 }
+
+export default login
