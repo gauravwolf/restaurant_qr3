@@ -3,7 +3,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 // import { FcGoogle } from "react-icons/fc";
 
-const Register = () => {
+const Register = () => {  
   return (
     <div className="min-h-screen flex items-center justify-center bg-cover bg-center bg-[url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')]">
       <div className="backdrop-blur-xl bg-white/10 border border-white/20 shadow-xl w-full max-w-md rounded-2xl p-8">
