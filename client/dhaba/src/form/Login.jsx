@@ -6,13 +6,11 @@ export default function Login() {
     <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 py-10">
       <div className="max-w-3xl w-full bg-[#0f1216] border border-gray-800 rounded-2xl p-10 shadow-xl">
         
-        {/* Title */}
         <h1 className="text-3xl font-bold mb-2">Welcome Back</h1>
         <p className="text-gray-400 mb-8">Login to continue managing your account</p>
 
         <form className="space-y-6">
 
-          {/* Email */}
           <div>
             <label className="text-sm">Email Address</label>
             <div className="flex items-center bg-black border border-gray-700 rounded-lg px-3 py-3 mt-1">
@@ -25,7 +23,6 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Password */}
           <div>
             <label className="text-sm">Password</label>
             <div className="flex items-center bg-black border border-gray-700 rounded-lg px-3 py-3 mt-1">
@@ -37,8 +34,6 @@ export default function Login() {
               />
             </div>
           </div>
-
-          {/* Remember + Forgot Password */}
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center">
               <input type="checkbox" className="mr-2" />
@@ -49,13 +44,11 @@ export default function Login() {
             </Link>
           </div>
 
-          {/* LOGIN BUTTON */}
           <button className="w-full bg-white text-black font-semibold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-200 transition">
             Login <FiArrowRight />
           </button>
         </form>
 
-        {/* REGISTER LINK */}
         <p className="text-center mt-6 text-gray-400">
           Don't have an account?{" "}
           <Link to="/register" className="text-blue-400 underline cursor-pointer">Create Account →</Link>
