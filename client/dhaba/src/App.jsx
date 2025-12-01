@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/next"
 import Login from "./form/Login";
 import Register from "./form/Register";
 
