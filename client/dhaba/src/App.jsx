@@ -1,15 +1,58 @@
-import { Routes, Route } from "react-router-dom";
-import { Analytics } from "@vercel/analytics/next"
-import Login from "./form/Login";
-import Register from "./form/Register";
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Homepage from './pages/Homepage';
+import Welcome from './pages/Welcome';
+import ProtectRoutes from './components/ProtectRoutes';
+import OpenRoutes from './components/OpenRoutes';
+import { ToastProvider } from './context/ToastContext';
 
-function App() {
+const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-    </Routes>
+    <ToastProvider>
+      <Router>
+        <Routes>
+          <Route
+            path="/welcome"
+            element={
+            
+                <Welcome />
+            
+            }
+          />
+
+          <Route
+            path="/"
+            element={
+              //required accessToken to get this page
+              <ProtectRoutes>
+                <Homepage />
+              </ProtectRoutes>
+            }
+          />
+
+          <Route
+            path="/login"
+            element={
+              <OpenRoutes>
+                <Login />
+              </OpenRoutes>
+            }
+          />
+
+          <Route
+            path="/register"
+            element={
+              <OpenRoutes>
+                <Register />
+              </OpenRoutes>
+            }
+          />
+        </Routes>
+      </Router>
+    </ToastProvider>
   );
-}
+};
 
 export default App;
