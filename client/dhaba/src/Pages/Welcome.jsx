@@ -1,15 +1,22 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UtensilsCrossed, UserPlus, LogIn, User, Sparkles } from 'lucide-react';
-
+import { session } from '../redux/guestSlice';
+import { useDispatch } from 'react-redux';
+import { useParams, useSearchParams } from 'react-router-dom';
 const Welcome = () => {
+  console.log(useParams());
+  // /?key=value
+  const [searchParams] = useSearchParams();
+  const qrSlug = searchParams.get('qr');
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleContinueAsGuest = () => {
-    // You can add guest logic here, for now just navigate to homepage
-    // or set a guest flag in localStorage
-    localStorage.setItem('guestMode', 'true');
-    navigate('/');
+    dispatch(session({ deviceId: 'dfkdfds', qrSlug }));
+    // localStorage.setItem('guestMode', 'true');
+    // navigate('/');
   };
 
   return (
@@ -28,9 +35,11 @@ const Welcome = () => {
               <UtensilsCrossed className="w-12 h-12 text-gray-200" />
             </div>
           </div>
-          
+
           <h1 className="text-3xl font-bold text-white mb-3">SavoryBites</h1>
-          <p className="text-sm text-gray-400 uppercase tracking-wider mb-2">Restaurant Management</p>
+          <p className="text-sm text-gray-400 uppercase tracking-wider mb-2">
+            Restaurant Management
+          </p>
           <p className="text-base text-gray-300 max-w-xs mx-auto">
             Experience fine dining with our curated menu and exceptional service
           </p>

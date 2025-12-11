@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import authReducer from './authSlice.js'
-
-const Store = configureStore({
+import guestReducer from './guestSlice.js'
+const store = configureStore({
     reducer : {
-        auth : authReducer
+        auth : authReducer,
+        guest : guestReducer
     }
 })
 
 console.log(store)
-export default Store
+export default store

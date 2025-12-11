@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
-const Homepage = () => {
+const HomePage = () => {
   console.log(localStorage.getItem('accessToken'));
   useEffect(() => {
     axios.get('http://localhost:3000/menu', {
@@ -12,4 +12,4 @@ const Homepage = () => {
   return <div>HOMEPAGE</div>;
 };
 
-export default Homepage;
+export default HomePage;
