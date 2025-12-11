@@ -1,3 +1,4 @@
+
 const checkRole = (role) => {
 return (req,res,next) => {
     if(role.includes(req.user.role)){
@@ -14,4 +15,4 @@ res.status(403).json({
 export default checkRole;
 
 
-login => email => code 
+login => email => code  // email => code => verify login

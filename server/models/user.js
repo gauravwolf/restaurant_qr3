@@ -1,3 +1,5 @@
+//module => commonjs / es6
+
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
@@ -20,7 +22,7 @@ const userSchema = new mongoose.Schema({
   },
   role : {
     type : String ,
-    enum : ['customer' , 'admin'],
+    enum : ['customer' , 'admin','custor'],
     default : 'customer'
   },
   isActive: {
@@ -43,10 +45,22 @@ const userSchema = new mongoose.Schema({
   },
   lastlogin : {
     type : Date,
-    default : Date.now()
+    default : null
   }
 });
 
 const User = mongoose.model('User', userSchema);
 
 export default User;
+
+//mongodbatlas => api integration 
+
+
+//login register => auth
+
+
+//redux toolkit => async thunk api call => slice main data manage karo
+
+
+
+//NOTE update table , delete table , user.controller.js , user.routes.js => all users get /token /admin , deactivate user  , update user  , delete user
