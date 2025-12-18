@@ -6,3 +6,6 @@ router.post('/register',register )
 router.post('/login',Login )
 
 export default router
+
+
+//auth.controller  + auth.route => app.js

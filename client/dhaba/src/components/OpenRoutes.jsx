@@ -10,6 +10,3 @@ function OpenRoutes({ children }) {
 
 export default OpenRoutes;
 
-//rbac => role based access control 
-// student => ui access => student 
-//master =>

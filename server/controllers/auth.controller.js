@@ -1,6 +1,8 @@
 import User from '../models/user.js';
 import bcrypt from 'bcrypt';
 import { generateAccessToken, generateRefreshToken } from '../utils/jwt.js';
+import transporter from '../services/emailService.js';
+import registerTemplate from '../services/emailTemplates/registerTemplate.js';
 export const register = async (req, res) => {
   try {
     const { name, email, password, phone } = req.body;
@@ -17,8 +19,18 @@ export const register = async (req, res) => {
     const passwordHash = await bcrypt.hash(password, 12);
     const data = { name, email, phone, passwordHash };
     const newUser = await User.create(data);
+
+    //integrate mail service here
+   const info = await transporter.sendMail({
+    from: 'riteshpatidar088@gmail.com',
+    to: newUser.email,
+    subject: 'User registration',
+    text: registerTemplate(newUser.name , "SavouryBites") // plain‑text body
+     
+   })
+   console.log('mail sent', info.messageId)
     res.status(201).json({
-      messsage: 'success',
+      messsage: 'your account has been successfully created',
       data: newUser,
     });
   } catch (error) {
@@ -93,3 +105,6 @@ export const Login = async (req, res) => {
     });
   }
 };
+
+
+// gaee jvfa mele ukmu

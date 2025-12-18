@@ -8,7 +8,7 @@ import checkRole from './middlewares/checkRole.js';
 import sessionRoutes from './routes/session.route.js'
 import menuRoutes from './routes/menu.route.js'
 import dotenv from 'dotenv' ;
-
+import cartRoutes from './routes/cart.route.js'
 dotenv.config() ;
 const app = express();
 app.use(cors({
@@ -18,14 +18,6 @@ app.use(cors({
 //NOTE fn used for mongodb connection
 dbConnect();
 app.use(express.json())
-app.get('/menu', verifyToken, checkRole(['customer', 'admin']), (req,res)=>{
-// if(req.headers.authorization){
-//   return res.send('you can access menu')
-// }else {
-//   return res.send('you are not authorized , please login')
-// }
-res.send('menu fetched')
-})
 app.get('/', (req, res) => {
   res.send('THIS IS MY HOMEPAGE');
 });
@@ -33,7 +25,8 @@ app.get('/', (req, res) => {
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1' ,TableRoutes ) ;
 app.use('/api/v1' , sessionRoutes);
-app.use('/api/v1' , menuRoutes)
+app.use('/api/v1' , menuRoutes);
+app.use('/api/v1' , cartRoutes)
 
 // app.get('/qr' ,(req,res)=>{
 //   res.download()

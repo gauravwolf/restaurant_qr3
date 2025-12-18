@@ -1,159 +1,106 @@
-import { FiUser, FiPhone, FiMail, FiLock } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { UtensilsCrossed, UserPlus, LogIn, User, Sparkles } from 'lucide-react';
+import { session } from '../redux/guestSlice';
+import { useDispatch } from 'react-redux';
+import { useParams, useSearchParams } from 'react-router-dom';
+const Welcome = () => {
+  console.log(useParams());
+  // /?key=value
+  const [searchParams] = useSearchParams();
+  const qrSlug = searchParams.get('qr');
 
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-export default function Register() {
+  const handleContinueAsGuest = () => {
+    // You can add guest logic here, for now just navigate to homepage
+    // or set a guest flag in localStorage
+    localStorage.setItem('guestMode', 'true');
+    navigate('/');
+  };
+
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center px-6 py-10">
-      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div>
-          <h1 className="text-3xl font-bold mb-2">SavoryBites</h1>
-          <p className="text-gray-400 mb-8">RESTAURANT MANAGEMENT</p>
+    <div className="min-h-screen bg-[#0a0a0a] flex items-center justify-center px-6 py-12">
+      {/* Animated background blobs */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-gray-800 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-gray-700 rounded-full mix-blend-multiply filter blur-3xl opacity-5 animate-blob animation-delay-2000"></div>
+      </div>
 
-          <h2 className="text-3xl font-semibold mb-2">Create Account</h2>
-          <p className="text-gray-400 mb-8">Join us and start earning rewards today</p>
-
-          <form className="space-y-6">
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-              <div>
-                <label className="text-sm">Full Name</label>
-                <div className="flex items-center bg-[#0f1216] border border-gray-700 rounded-lg px-3 py-3 mt-1">
-                  <FiUser className="text-gray-400 mr-3" />
-                  <input
-                    type="text"
-                    placeholder="John Doe"
-                    className="w-full bg-transparent outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="text-sm">Email Address</label>
-                <div className="flex items-center bg-[#0f1216] border border-gray-700 rounded-lg px-3 py-3 mt-1">
-                  <FiMail className="text-gray-400 mr-3" />
-                  <input
-                    type="email"
-                    placeholder="example@gmail.com"
-                    className="w-full bg-transparent outline-none"
-                  />
-                </div>
-              </div>
-
+      <div className="relative w-full max-w-md mx-auto">
+        {/* Logo and Branding Section */}
+        <div className="text-center mb-12">
+          <div className="flex justify-center mb-6">
+            <div className="w-24 h-24 rounded-full bg-gray-800/50 border border-gray-700/50 flex items-center justify-center shadow-lg">
+              <UtensilsCrossed className="w-12 h-12 text-gray-200" />
             </div>
+          </div>
 
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-
-              <div>
-                <label className="text-sm">Phone Number</label>
-                <div className="flex items-center bg-[#0f1216] border border-gray-700 rounded-lg px-3 py-3 mt-1">
-                  <FiPhone className="text-gray-400 mr-3" />
-                  <input
-                    type="text"
-                    placeholder="1234567890"
-                    className="w-full bg-transparent outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="text-sm">Password</label>
-                <div className="flex items-center bg-[#0f1216] border border-gray-700 rounded-lg px-3 py-3 mt-1">
-                  <FiLock className="text-gray-400 mr-3" />
-                  <input
-                    type="password"
-                    placeholder="********"
-                    className="w-full bg-transparent outline-none"
-                  />
-                </div>
-                <p className="text-xs text-gray-500 mt-1">Min. 6 characters</p>
-              </div>
-
-            </div>
-            <div>
-              <label className="text-sm">Confirm Password</label>
-              <div className="flex items-center bg-[#0f1216] border border-gray-700 rounded-lg px-3 py-3 mt-1">
-                <FiLock className="text-gray-400 mr-3" />
-                <input
-                  type="password"
-                  placeholder="********"
-                  className="w-full bg-transparent outline-none"
-                />
-              </div>
-            </div>
-
-            <div className="flex items-center text-sm">
-              <input type="checkbox" className="mr-2" />
-              <p>
-                I agree to the <a className="text-blue-400 underline">Terms</a> and{" "}
-                <Link className="text-blue-400 underline">Privacy Policy</Link>
-              </p>
-            </div>
-
-          
-            <button className="w-full bg-white text-black font-semibold py-3 rounded-lg flex items-center justify-center gap-2 hover:bg-gray-200 transition">
-              <FiUser />
-              Create Account
-            </button>
-
-          </form>
-
-     
-          <p className="text-center mt-6 text-gray-400">
-            Already have an account?{" "}
-            <Link to="/" className="text-blue-400 underline cursor-pointer">Sign In →</Link>
+          <h1 className="text-3xl font-bold text-white mb-3">SavoryBites</h1>
+          <p className="text-sm text-gray-400 uppercase tracking-wider mb-2">
+            Restaurant Management
+          </p>
+          <p className="text-base text-gray-300 max-w-xs mx-auto">
+            Experience fine dining with our curated menu and exceptional service
           </p>
         </div>
 
-   
-        <div className="space-y-6">
+        {/* Action Buttons */}
+        <div className="space-y-4 mb-8">
+          <Link
+            to="/register"
+            className="w-full py-3.5 px-6 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-white/20 transition-all duration-200 flex items-center justify-center gap-3 text-base shadow-lg"
+          >
+            <UserPlus className="w-5 h-5" />
+            <span>Register</span>
+          </Link>
 
-     
-          <div className="bg-[#0f1216] border border-gray-700 rounded-xl p-6">
-            <h3 className="text-xl font-semibold mb-1">New Member Benefits</h3>
-            <p className="text-gray-300">🎁 20% Welcome Discount</p>
-            <p className="text-gray-400 mt-2">Get 20% off on your first order</p>
-          </div>
+          <Link
+            to="/login"
+            className="w-full py-3.5 px-6 bg-gray-900/50 border border-gray-800 text-white font-semibold rounded-lg hover:bg-gray-900/70 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition-all duration-200 flex items-center justify-center gap-3 text-base"
+          >
+            <LogIn className="w-5 h-5" />
+            <span>Login</span>
+          </Link>
 
-
-          <div className="bg-[#0f1216] border border-gray-700 rounded-xl p-6 space-y-3">
-            <h3 className="text-xl font-semibold mb-3">Loyalty Points Program</h3>
-
-            <div className="flex justify-between text-gray-300">
-              <p>Earn Points</p> <p>1 Point = ₹1</p>
-            </div>
-
-            <div className="flex justify-between text-gray-300">
-              <p>Redeem Points</p> <p>100 Points = ₹10</p>
-            </div>
-
-            <div className="flex justify-between text-gray-300">
-              <p>Bonus Points</p> <p>+50 Points</p>
-            </div>
-          </div>
-
-   
-          <div className="bg-[#0f1216] border border-gray-700 rounded-xl p-6 space-y-3">
-            <h3 className="text-xl font-semibold">Membership Tiers</h3>
-
-            <div className="flex justify-between text-gray-300">
-              <p>Bronze Member</p> <p>0–500 Points</p>
-            </div>
-
-            <div className="flex justify-between text-gray-300">
-              <p>Silver Member</p> <p>501–2000 Points</p>
-            </div>
-
-            <div className="flex justify-between text-gray-300">
-              <p>Gold Member</p> <p>2000+ Points</p>
-            </div>
-          </div>
-
+          <button
+            onClick={handleContinueAsGuest}
+            className="w-full py-3.5 px-6 bg-gray-900/30 border border-gray-800/50 text-gray-300 font-semibold rounded-lg hover:bg-gray-900/50 hover:text-white focus:outline-none focus:ring-2 focus:ring-gray-700 focus:border-gray-700 transition-all duration-200 flex items-center justify-center gap-3 text-base"
+          >
+            <User className="w-5 h-5" />
+            <span>Continue as Guest</span>
+          </button>
         </div>
 
+        {/* Benefits Section */}
+        <div className="bg-gray-900/50 border border-gray-800 rounded-lg p-6">
+          <div className="flex items-center gap-2 mb-4">
+            <Sparkles className="w-5 h-5 text-gray-400" />
+            <h3 className="text-lg font-bold text-gray-100">Why Join Us?</h3>
+          </div>
+          <ul className="space-y-2.5 text-sm text-gray-400">
+            <li className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
+              Earn loyalty points on every order
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
+              Exclusive member discounts and offers
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
+              Priority support and faster service
+            </li>
+            <li className="flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-gray-500"></div>
+              Track your order history and preferences
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );
-}
+};
+
+export default Welcome;
